@@ -6,9 +6,9 @@ In Heroku, there is an app called `mixpanel-proxy` that hosts this Docker contai
 To deploy:
 - Clone this repo
 - Make and commit changes
-- `heroku git:remote -a dev-mixpanel-proxy` - to create the heroku remote
-- `git remote rename heroku dev-mixpanel-proxy-heroku` - to rename the remote
-- `git push dev-mixpanel-proxy-heroku HEAD:master --force` - to deploy
+- `heroku git:remote -a mixpanel-proxy` - to create the heroku remote
+- `git remote rename heroku mixpanel-proxy-heroku` - to rename the remote
+- `git push mixpanel-proxy-heroku HEAD:master --force` - to deploy
 
 TODO:
 - Hook the Heroku up to GitHub to avoid manual deploys
