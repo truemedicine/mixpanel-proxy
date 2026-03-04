@@ -24,6 +24,16 @@ server {
         proxy_pass https://decide.mixpanel.com/decide;
     }
 
+    # RUM/observability proxy (CIPA compliance — opaque paths hide vendor identity)
+    # Datadog RUM + Logs: /v1/api/v2/rum etc.
+    location /v1/ {
+        proxy_set_header Host browser-intake-us1-datadoghq.com;
+        proxy_set_header X-Real-IP $http_cf_connecting_ip;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_ssl_server_name on;
+        proxy_pass https://browser-intake-us1-datadoghq.com/;
+    }
+
     location / {
         proxy_set_header Host api.mixpanel.com;
         proxy_set_header X-Real-IP $http_cf_connecting_ip;
